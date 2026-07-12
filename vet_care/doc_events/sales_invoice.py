@@ -30,8 +30,11 @@ def on_submit(doc, method):
         for item in doc.items:
             if item.item_code in pricing_rule_items:
                 customer = frappe.get_doc("Customer", doc.customer)
-                customer.custom_full_service_loyalty_count += item.qty
-                customer.save()
-                frappe.db.commit()
+                if customer.custom_full_service_loyalty_count < 5 and item.discount_amount > 0:
+                    return
+                else:
+                    customer.custom_full_service_loyalty_count += item.qty
+                    customer.save()
+                    frappe.db.commit()
 
               

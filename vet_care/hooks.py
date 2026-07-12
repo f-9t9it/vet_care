@@ -250,7 +250,8 @@ doc_events = {
     },
     "Sales Invoice": {
         "validate": "vet_care.doc_events.sales_invoice.validate",
-        "on_submit": "vet_care.doc_events.sales_invoice.on_submit"
+        "before_submit": "vet_care.doc_events.sales_invoice.on_submit",
+
     },
     "Contact": {
         "validate": "vet_care.doc_events.contact.validate"
