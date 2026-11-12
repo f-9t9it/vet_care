@@ -4,7 +4,8 @@ from frappe import _
 
 
 def validate(doc, method):
-    pass
+    if doc.pos_profile:
+        doc.pb_set_cost_center = frappe.db.get_value("POS Profile", doc.pos_profile, "cost_center")
     # if not _is_pet_related_to(doc.patient, doc.customer):
     #     frappe.throw(_('Pet is not related to the customer'))
 
